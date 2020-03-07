@@ -33,6 +33,10 @@ class Space
 		void setRent(int rent_) {this->rent = rent_;}
 		void setPrice(int price_) {this->price = price_;}
 		
+		/*OVERLOAD << OPERATOR [OUTPUT STREAMS]*/
+		friend std::ostream& operator<<(std::ostream &out, const Space &space);
+		
+		
 };
 
 #endif

@@ -37,7 +37,20 @@ T getData(std::vector<T> allowedValues = {})
 		
 	}while(!valid);	//loop around until valid data is entered
 	
+	/*CLEAR CIN*/
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	
 	return temp;
+}
+
+
+GameManager::~GameManager()
+{
+	if (this->gameboard != nullptr)
+	{
+		delete gameboard;
+	}
 }
 
 std::vector<Space*> GameManager::readSpaces()
@@ -102,6 +115,7 @@ std::vector<Player*> GameManager::getPlayers()
 	
 	std::cout << "How many players: ";	//get player stuff
 	numplayers = getData<int>({2, 3, 4, 5, 6});
+	std::cout << numplayers;
 	
 	for (int i = 0; i < numplayers; i++)
 	{
@@ -144,17 +158,30 @@ void GameManager::turn()
 		
 }
 
-
-
+/**************************************************/
+/**************************************************/
+/**************************************************/
 
 /*DEBUG*/
 
 /*PRINT OUT ALL CURRENT PLAYERS*/
 void GameManager::printPlayers()
 {
-	for (int i = 0; i < gameboard->getPlayersVector().size(); i++)
+	auto vec = gameboard->getPlayersVector();
+	for (auto it = vec.begin(); it != vec.end(); it++)
 	{
-		/*GET ELEMENT 'i' FROM PLAYERS VECTOR, AND DEREFERENCE*/
-		std::cout << *(gameboard->getPlayersVector()[i]) << std::endl;
+		/*DEREFERENCE ITERATOR TWICE TO PRINT PLAYER*/
+		std::cout << *(*it);
+	}
+}
+
+/*PRINT OUT ALL CURRENT SPACES*/
+void GameManager::printSpaces()
+{
+	auto vec = gameboard->getSpacesVector();
+	for (auto it = vec.begin(); it != vec.end(); it++)
+	{
+		/*DEREFERENCE ITERATOR TWICE TO PRINT PLAYER*/
+		std::cout << *(*it);
 	}
 }

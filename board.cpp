@@ -134,15 +134,15 @@ void Board::activateSpace(Player* player)
 	{
 		;//GO CODE
 	}
-	else if (type == "jail")
+	else if (type == "JAIL")
 	{
 		;//JAIL CODE
 	}
-	else if (type == "gotojail")
+	else if (type == "GOTOJAIL")
 	{
 		;//GOTO JAIL CODE
 	}
-	else if (type == "property")
+	else if (type == "PROPERTY")
 	{
 		;//PROPRETY CODE
 	}

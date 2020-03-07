@@ -21,8 +21,7 @@ class GameManager
 		
 	public:
 	
-		GameManager() {};
-		~GameManager() {};
+		~GameManager();
 	
 		void setBoard(Board* brd) {this->gameboard = brd;}
 		Board* getBoard () const {return this->gameboard;}
@@ -44,6 +43,7 @@ class GameManager
 		
 		/*DEBUG FUNCTIONS*/
 		void printPlayers();
+		void printSpaces();
 		
 };
 
