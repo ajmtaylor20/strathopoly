@@ -20,7 +20,8 @@ dice rolldice()
 	return temp;
 }
 
-/*ONLY ALLOW A FULLY INITIALISED BOARD*/
+Board::Board(){}
+
 Board::Board(std::vector<Space*> spaces_, std::vector<Player*> players_, std::vector<Player*> jail_)
 {
 	this->spaces = spaces_; this->players = players_; this->jail = jail_;
@@ -128,23 +129,24 @@ void Board::movePlayer(Player* player)
 void Board::activateSpace(Player* player)
 {
 	/*GET THE SPACE TYPE FROM THE SPACE OBJECT*/
-	spaceTypes type = spaces[player->getPosition()]->getSpaceType();
+	std::string type = spaces[player->getPosition()]->getSpaceType();
 	
 	/*EXECUTE CODE DEPENDING ON TYPE*/
-	switch(type)
+	if (type == "GO")
 	{
-		case GO:	/*AWARD GO MONEY*/ break;
-		
-		case JAIL: /*JUST VISITING :)*/ break;
-		
-		case GOTOJAIL: /*MOVE TO JAIL*/ break;
-		
-		case PROPERTY: /*RUN SOME PROPERTY CODE*/ break;
-		
+		;//GO CODE
 	}
-	
+	else if (type == "jail")
+	{
+		;//JAIL CODE
+	}
+	else if (type == "gotojail")
+	{
+		;//GOTO JAIL CODE
+	}
+	else if (type == "property")
+	{
+		;//PROPRETY CODE
+	}
 }
-
-
-
 

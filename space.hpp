@@ -7,32 +7,31 @@
 
 class Player;
 
-/*DEFINE WHAT TYPES OF SPACE CAN EXIST*/
-enum spaceTypes {JAIL, GO, GOTOJAIL, PROPERTY};
-
 class Space
 {
 	private:
 		std::string name;
 		std::string description;
 		Player* owner;
-		spaceTypes spaceType;
-		unsigned int rent;
+		std::string spaceType;
+		unsigned int rent, price;
 	
 	public:
 		/*GETTERS*/
 		std::string getName() const {return this->name;}
 		std::string getDescription() const {return this->description;}
 		Player* getOwner() const {return this->owner;}
-		spaceTypes getSpaceType() const {return this->spaceType;}
-		unsigned int getRent() const {return rent;}
+		std::string getSpaceType() const {return this->spaceType;}
+		unsigned int getRent() const {return this->rent;}
+		unsigned int getPrice() const {return this->price;}
 		
 		/*SETTERS*/
 		void setName(std::string name_) {this->name = name_;}
 		void setDescription(std::string description_) {this->description = description_;}
 		void setOwner(Player* player) {this->owner = player;}
-		void setSpaceType(spaceTypes type) {this->spaceType = type;}
+		void setSpaceType(std::string type) {this->spaceType = type;}
 		void setRent(int rent_) {this->rent = rent_;}
+		void setPrice(int price_) {this->price = price_;}
 		
 };
 

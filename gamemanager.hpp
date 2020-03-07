@@ -11,7 +11,6 @@ class Player;
 class Space;
 class Board;
 
-
 class GameManager
 {
 	private:
@@ -27,8 +26,14 @@ class GameManager
 	
 		void setBoard(Board* brd) {this->gameboard = brd;}
 		Board* getBoard () const {return this->gameboard;}
+
+		/*READ IN SPACE DATA IN CSV FORMAT*/
+		std::vector<Space*> readSpaces();
 		
-		/*GATHER INFORMATION FROM USER*/
+		/*GET PLAYERS INFO*/
+		std::vector<Player*> getPlayers();
+		
+		/*READ IN DATA AND FINALISE GAMEBOARD*/
 		void setup();
 		
 		/*MAIN GAMECODE GOES HERE*/

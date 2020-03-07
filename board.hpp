@@ -17,7 +17,7 @@ class Board
 		
 	public:
 		
-		/*ONLY ALLOW A FULLY INITIALISED BOARD*/
+		Board();
 		Board(std::vector<Space*>, std::vector<Player*>, std::vector<Player*>);
 		~Board();
 		
