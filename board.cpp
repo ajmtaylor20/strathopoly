@@ -119,10 +119,8 @@ void Board::movePlayer(Player* player)
 		int currentPosition = player->getPosition();
 		int newPosition = (currentPosition + moveTotal) - spaces.size();
 		player->setPosition(newPosition);
-		this->activateSpace(player);	//activate newly landed space
 	}else{
 		player->move(moveTotal);		//simply move the player with the move method
-		this->activateSpace(player);	//activate newly landed space
 	}
 }
 

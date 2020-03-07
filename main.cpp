@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
-#include "board.hpp"
+#include "gamemanager.hpp"
 int main()
 {
-	//GameManager mygame;
-	//mygame.setup()
-	//mygame.start()
+	GameManager mygame;
+	mygame.setup();
+	mygame.printPlayers();
 	return 0;
 }

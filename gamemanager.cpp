@@ -1,7 +1,44 @@
 #include <iostream>
 #include <fstream>
+#include <limits>
+#include <algorithm>
 #include <sstream>
 #include "gamemanager.hpp"
+
+/*GENERIC DATA GATHERING FROM USER*/
+template<typename T>
+T getData(std::vector<T> allowedValues = {})
+{
+	bool valid = true;
+	T temp;
+		
+	do
+	{
+		std::cin >> temp;	//attempt to gather data
+		
+		/*IF ALL_VALS NOT EMPTY AND ENTERED DATA IS NOT IN THE LIST*/
+		if ( (allowedValues.size() != 0) and (std::find(allowedValues.begin(), allowedValues.end(), temp) == allowedValues.end()) )
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "Sorry, That Input Is Not Recognised. Please Re-Enter!: ";
+			valid = false;
+		}
+		
+		/*IF CIN FAILS, CLEAR CIN AND ASK FOR RE-ENTRY*/
+		else if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			valid = false;
+			std::cout << "Please Re-Enter Data \n";
+		}else{valid = true;}
+		
+		
+	}while(!valid);	//loop around until valid data is entered
+	
+	return temp;
+}
 
 std::vector<Space*> GameManager::readSpaces()
 {	
@@ -57,9 +94,29 @@ std::vector<Space*> GameManager::readSpaces()
 	return spacevector;
 }
 
-std::vector<Player*> getPlayers()
+std::vector<Player*> GameManager::getPlayers()
 {
-	;	//get player stuff.
+	int numplayers = 0;
+	int token = 0;
+	std::vector<Player*> playervector;
+	
+	std::cout << "How many players: ";	//get player stuff
+	numplayers = getData<int>({2, 3, 4, 5, 6});
+	
+	for (int i = 0; i < numplayers; i++)
+	{
+		Player* temp = new Player;
+		
+		std::cout << "Please Enter Your Name, Player " << i+1 << ": ";
+		std::string name = getData<std::string>();
+		temp->setName(name);
+		temp->setPosition(0);	//start at GO
+		temp->setMoney(1500);	//start all players with $1500
+		
+		playervector.push_back(temp);	//place in vector
+	}
+	
+	return playervector;
 }
 
 void GameManager::setup()
@@ -72,7 +129,7 @@ void GameManager::setup()
 	gameboard->setSpacesVector(readSpaces());	//store returned vector in gameboard
 	
 	/*GET PLAYER DATA*/
-	gameboard->setPlayers(getPlayers());	//store returned vector in gameboard 
+	gameboard->setPlayersVector(getPlayers());	//store returned vector in gameboard 
 	
 }
 
@@ -83,12 +140,21 @@ void GameManager::start()
 
 void GameManager::turn()
 {
-	/*	ASK PLAYER WHAT TO DO
+	/*FIND OUT WHAT SPACE THE USER IS ON*/
 		
-		CALL BOARD METHOD THAT DOES THE FOLLOWING THINGS:
-			MOVE()	CALL PLAYER'S MOVE METHOD
-			DELETE()	CALL IF PLAYER LEAVES GAME
-			BUY()	BUY CURRENT SPACE
-			SELL()	SELL A SPACE*/
-		
+}
+
+
+
+
+/*DEBUG*/
+
+/*PRINT OUT ALL CURRENT PLAYERS*/
+void GameManager::printPlayers()
+{
+	for (int i = 0; i < gameboard->getPlayersVector().size(); i++)
+	{
+		/*GET ELEMENT 'i' FROM PLAYERS VECTOR, AND DEREFERENCE*/
+		std::cout << *(gameboard->getPlayersVector()[i]) << std::endl;
+	}
 }

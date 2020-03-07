@@ -42,6 +42,9 @@ class GameManager
 		/*LET'S A PLAYER TAKE THEIR TURN*/
 		void turn();
 		
+		/*DEBUG FUNCTIONS*/
+		void printPlayers();
+		
 };
 
 
