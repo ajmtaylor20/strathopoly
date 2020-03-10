@@ -4,7 +4,8 @@
 int main()
 {
 	GameManager mygame;
-	mygame.setup();
+	mygame.setup();	
+	
 	mygame.printPlayers();
 	mygame.printSpaces();
 

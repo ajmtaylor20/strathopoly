@@ -26,7 +26,7 @@ Board::Board(std::vector<Space*> spaces_, std::vector<Player*> players_, std::ve
 int Board::findSpace(std::string name)
 {
 	/*CREATE ITERATOR AND ITERATE UNTIL THE END OF THE SPACES LIST*/
-	for (std::vector<Space*>::iterator it = this->spaces.begin(); it != this->spaces.end(); it++)
+	for (auto it = this->spaces.begin(); it != this->spaces.end(); it++)
 	{
 		if ((*it)->getName() == name)
 		{
@@ -39,31 +39,9 @@ int Board::findSpace(std::string name)
 
 Board::~Board()
 {
-	/*CREATE ITERATOR AND ITERATE UNTIL THE END OF THE SPACES LIST*/
-	for (std::vector<Space*>::iterator it = this->spaces.begin(); it != this->spaces.end(); it++)
-	{
-		if (*it != nullptr)
-		{
-			/*FREE MEMORY ALLOCATED FOR SPACE*/
-			delete *it;
-			
-			/*REMOVE FROM VECTOR*/
-			this->spaces.erase(it);
-		}
-	}
-	
-	/*CREATE ITERATOR AND ITERATE UNTIL THE END OF THE PLAYERS LIST*/
-	for (std::vector<Player*>::iterator it = this->players.begin(); it != this->players.end(); it++)
-	{
-		if (*it != nullptr)
-		{
-			/*FREE MEMORY ALLOCATED FOR PLAYER*/
-			delete *it;
-			
-			/*REMOVE FROM VECTOR*/
-			this->players.erase(it);
-		}
-	}
+	spaces.clear();
+	players.clear();
+
 }
 
 
@@ -71,7 +49,7 @@ bool Board::isJailed(Player* player)
 {
 	bool isjailed = false;
 	
-	for (std::vector<Player*>::iterator it = this->jail.begin(); it != this->jail.end(); it++)
+	for (auto it = this->jail.begin(); it != this->jail.end(); it++)
 	{
 		if (player = *it)
 		{

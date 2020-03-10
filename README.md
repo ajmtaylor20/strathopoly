@@ -1,2 +1,2 @@
 # strathopoly
-EE273 Project
+Commandline Monopoly Written in C++

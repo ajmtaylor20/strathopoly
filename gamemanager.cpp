@@ -178,7 +178,7 @@ void GameManager::printPlayers()
 	for (auto it = vec.begin(); it != vec.end(); it++)
 	{
 		/*DEREFERENCE ITERATOR TWICE TO PRINT PLAYER*/
-		std::cout << *(*it);
+		std::cout << " " << *(*it) << " ";
 	}
 }
 
@@ -186,9 +186,12 @@ void GameManager::printPlayers()
 void GameManager::printSpaces()
 {
 	auto vec = gameboard->getSpaces();
+	std::cout << "Alloc game board\n";
+	std::cout << vec.size() << "\n";
 	for (auto it = vec.begin(); it != vec.end(); it++)
 	{
 		/*DEREFERENCE ITERATOR TWICE TO PRINT PLAYER*/
 		std::cout << *(*it);
 	}
+	std::cout << "finish print spaces" << "\n";
 }
