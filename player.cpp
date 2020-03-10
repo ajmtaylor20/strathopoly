@@ -13,6 +13,6 @@ void Player::changeMoney(int x)
 
 std::ostream& operator<<(std::ostream &out, const Player &player)
 {
-	out << "Name: " << player.name << ". Wealth: $" << player.money << std::endl;
+	out << player.name;
 	return out;
 }

@@ -6,17 +6,13 @@
 
 #include "board.hpp"
 
-struct dice
-{
-	int die1, die2;
-};
 
 dice rolldice()
 {	
 	dice temp;
 	srand((unsigned) time(0)); //seed random number generator
-	temp.die1 = 1+ (rand() % 6); 	// 'roll' first die
-	temp.die2 = 1+ (rand() % 6);	// 'roll' second die
+	temp.die1 = 1 + (rand() % 6); 	// 'roll' first die
+	temp.die2 = 1 + (rand() % 6);	// 'roll' second die
 	return temp;
 }
 

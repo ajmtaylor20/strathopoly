@@ -7,6 +7,13 @@
 
 #include "player.hpp"
 
+struct dice
+{
+	int die1, die2;
+};
+
+dice rolldice();
+
 class Board
 {
 	private:
@@ -25,14 +32,14 @@ class Board
 		int findSpace(std::string);	//note, returns -1 if space was not found
 		
 		/*SETTERS*/
-		void setSpacesVector(std::vector<Space*> spaces_) {this->spaces = spaces_;}
-		void setPlayersVector(std::vector<Player*> players_) {this->players= players_;}
-		void setJailedPlayersVector(std::vector<Player*> jail_) {this->jail = jail_;}
+		void setSpaces(std::vector<Space*> spaces_) {this->spaces = spaces_;}
+		void setPlayers(std::vector<Player*> players_) {this->players= players_;}
+		void setJailedPlayers(std::vector<Player*> jail_) {this->jail = jail_;}
 		
 		/*GETTERS*/
-		std::vector<Space*> getSpacesVector() const {return this->spaces;}
-		std::vector<Player*> getPlayersVector() const {return this->players;}
-		std::vector<Player*> getJailedPlayersVector() const {return this->jail;}
+		std::vector<Space*> getSpaces() const {return this->spaces;}
+		std::vector<Player*> getPlayers() const {return this->players;}
+		std::vector<Player*> getJailedPlayers() const {return this->jail;}
 				
 		/*RETURNS TRUE IF PLAYER IS JAILED*/
 		bool isJailed(Player*);	

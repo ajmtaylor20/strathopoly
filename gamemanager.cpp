@@ -3,7 +3,12 @@
 #include <limits>
 #include <algorithm>
 #include <sstream>
+
+#include <stdlib.h>
+#include <time.h>
+
 #include "gamemanager.hpp"
+#include "board.hpp"
 
 /*GENERIC DATA GATHERING FROM USER*/
 template<typename T>
@@ -140,22 +145,24 @@ void GameManager::setup()
 	this->gameboard = gameboard_;
 	
 	/*CREATE SPACES FOR BOARD*/
-	gameboard->setSpacesVector(readSpaces());	//store returned vector in gameboard
+	gameboard->setSpaces(readSpaces());	//store returned vector in gameboard
 	
 	/*GET PLAYER DATA*/
-	gameboard->setPlayersVector(getPlayers());	//store returned vector in gameboard 
+	gameboard->setPlayers(getPlayers());	//store returned vector in gameboard
 	
 }
 
 void GameManager::start()
 {
-	/*INTERFACE STUFF HERE*/
+	
+	/*GATHER CURRENT PLAYERS*/;
+	
 }
 
 void GameManager::turn()
 {
 	/*FIND OUT WHAT SPACE THE USER IS ON*/
-		
+		;
 }
 
 /**************************************************/
@@ -167,7 +174,7 @@ void GameManager::turn()
 /*PRINT OUT ALL CURRENT PLAYERS*/
 void GameManager::printPlayers()
 {
-	auto vec = gameboard->getPlayersVector();
+	auto vec = gameboard->getPlayers();
 	for (auto it = vec.begin(); it != vec.end(); it++)
 	{
 		/*DEREFERENCE ITERATOR TWICE TO PRINT PLAYER*/
@@ -178,7 +185,7 @@ void GameManager::printPlayers()
 /*PRINT OUT ALL CURRENT SPACES*/
 void GameManager::printSpaces()
 {
-	auto vec = gameboard->getSpacesVector();
+	auto vec = gameboard->getSpaces();
 	for (auto it = vec.begin(); it != vec.end(); it++)
 	{
 		/*DEREFERENCE ITERATOR TWICE TO PRINT PLAYER*/
